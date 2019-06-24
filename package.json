@@ -1,0 +1,22 @@
+{
+  "name": "pms-api",
+  "version": "1.0.0",
+  "description": "A population management system api",
+  "main": "app.js",
+  "repository": "https://github.com/phemmz/pms-api.git",
+  "author": "Adetunji Femi <phemmzmcllroy@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "start": "nodemon --watch src/server --exec babel-node -- src/server/app.js",
+    "build-server": "babel -d ./dist ./src/server -s"
+  }
+}
