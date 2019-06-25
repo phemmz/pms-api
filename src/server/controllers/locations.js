@@ -32,6 +32,39 @@ const createLocation = async (request, response) => {
   }
 }
 
+const getAllLocations = async (_, response) => {
+  try {
+    const locations = await Location.findAll({
+      include: [
+        {
+          model: Location,
+          as: 'nestedLocations',
+        }
+      ],
+    });
+
+    if (locations.length) {
+      return response.status(200).json({
+        locations,
+        success: true,
+        message: 'Locations retrieved successfully',
+      });
+    } else {
+      return response.status(200).json({
+        success: true,
+        locations,
+        message: 'No location found'
+      })
+    }
+  } catch(error) {
+    response.status(500).json({
+      success: false,
+      error
+    });
+  }
+}
+
 export {
-  createLocation
+  createLocation,
+  getAllLocations
 }
