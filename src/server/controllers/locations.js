@@ -64,7 +64,50 @@ const getAllLocations = async (_, response) => {
   }
 }
 
+const updateLocation = async (request, response) => {
+  try {
+    const { locationId } = request.params;
+    const { name, female, male } = request.body;
+
+    if (locationId) {
+      const location = await Location.findByPk(locationId);
+
+      if (location === null) {
+        return response.status(404).json({
+          success: false,
+          message: 'Location not found',
+        });
+      } else {
+        const updatedLocationDetails = {
+          name: name ? name : location.name,
+          female: female ? female : location.female,
+          male: male ? male : location.male
+        };
+
+        const updatedLocation = await Location.update(updatedLocationDetails, {
+          where: {
+            id: locationId
+          },
+          returning: true
+        });
+
+        return response.status(200).json({
+          updatedLocation: updatedLocation[1][0],
+          success: true,
+          message: 'Location updated successfully',
+        });
+      }
+    }
+  } catch(error) {
+    response.status(500).json({
+      success: false,
+      error
+    });
+  }
+}
+
 export {
   createLocation,
-  getAllLocations
+  getAllLocations,
+  updateLocation
 }
