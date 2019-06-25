@@ -19,13 +19,21 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
       defaultValue: 0
-    }
+    },
+    parentLocationId: {
+      type: DataTypes.INTEGER,
+      onDelete: 'SET NULL',
+      references: {
+        model: 'Locations',
+        key: 'id',
+      },
+    },
   }, {});
 
   Location.associate = models => {
     Location.hasMany(models.Location, {
-      as: 'nestedLocation',
-      foreignKey: 'parentLocation'
+      as: 'childLocation',
+      foreignKey: 'parentLocationId'
     })
   };
 
