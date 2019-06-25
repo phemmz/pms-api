@@ -32,7 +32,7 @@ export default (sequelize, DataTypes) => {
 
   Location.associate = models => {
     Location.hasMany(models.Location, {
-      as: 'childLocation',
+      as: 'nestedLocations',
       foreignKey: 'parentLocationId'
     })
   };
