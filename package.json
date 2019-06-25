@@ -22,6 +22,7 @@
   "scripts": {
     "start": "nodemon --watch src/server --exec babel-node -- src/server/app.js",
     "build-server": "babel -d ./dist ./src/server -s",
-    "db:migrate": "sequelize db:migrate"
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate:undo"
   }
 }
