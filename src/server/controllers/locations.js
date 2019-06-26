@@ -106,8 +106,38 @@ const updateLocation = async (request, response) => {
   }
 }
 
+const deleteLocation = async (request, response) => {
+  try {
+    const { locationId } = request.params;
+
+    if (locationId) {
+      const location = await Location.findByPk(locationId);
+
+      if (location === null) {
+        return response.status(404).json({
+          success: false,
+          message: 'Location not found',
+        });
+      } else {
+        await Location.destroy({ where: { id: locationId }});
+
+        response.status(200).json({
+          success: true,
+          message: 'Location successfully deleted!'
+        });
+      }
+    }
+  } catch(error) {
+    response.status(500).json({
+      success: false,
+      error
+    });
+  }
+}
+
 export {
   createLocation,
   getAllLocations,
-  updateLocation
+  updateLocation,
+  deleteLocation
 }
