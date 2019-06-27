@@ -28,6 +28,7 @@
     "test": "nyc mocha src/server/test/* --require babel-core/register --exit --timeout 60000",
     "build-server": "babel -d ./dist ./src/server -s",
     "db:migrate": "sequelize db:migrate",
-    "db:migrate:undo": "sequelize db:migrate:undo"
+    "db:migrate:undo": "sequelize db:migrate:undo",
+    "postinstall": "yarn build-server"
   }
 }
