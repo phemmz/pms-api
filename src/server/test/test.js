@@ -86,7 +86,7 @@ describe('App test', () => {
     });
   });
 
-  describe('PUT /locations/:locationId', () => {
+  describe('PATCH /locations/:locationId', () => {
     it('should update an existing location details', async () => {
       const response = await chai.request(app)
           .patch(`/api/v1/locations/${1}`)
