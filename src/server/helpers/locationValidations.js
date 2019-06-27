@@ -6,15 +6,15 @@ const validateLocationDetails = (request, response, next) => {
       errors.name = 'Location name field can not be empty';
     }
 
-    if (name && !name.trim()) {
-      errors.name = 'Contact name field can not be empty';
+    if (name && !name.toString().trim()) {
+      errors.name = 'Location name field can not be empty';
     }
 
     if (!female) {
       errors.female = 'Female field can not be empty';
     }
 
-    if (female && !female.trim()) {
+    if (female && !female.toString().trim()) {
       errors.female = 'Female field can not be empty';
     }
 
@@ -26,7 +26,7 @@ const validateLocationDetails = (request, response, next) => {
       errors.male = 'Male field can not be empty';
     }
 
-    if (male && !male.trim()) {
+    if (male && !male.toString().trim()) {
       errors.male = 'Male field can not be empty';
     }
 
@@ -57,11 +57,11 @@ const validateLocationUpdateDetails = (request, response, next) => {
     const { name, female, male } = request.body;
     const errors = {};
 
-    if (name && !name.trim()) {
-      errors.name = 'Name field can not be empty';
+    if (name && !name.toString().trim()) {
+      errors.name = 'Location name field can not be empty';
     }
 
-    if (female && !female.trim()) {
+    if (female && !female.toString().trim()) {
       errors.female = 'Female field can not be empty';
     }
 
@@ -69,7 +69,7 @@ const validateLocationUpdateDetails = (request, response, next) => {
       errors.female = 'Female field value should be a number';
     }
 
-    if (male && !male.trim()) {
+    if (male && !male.toString().trim()) {
       errors.male = 'Male field can not be empty';
     }
 

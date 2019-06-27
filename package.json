@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "nodemon --watch src/server --exec babel-node -- src/server/app.js",
-    "test": "nyc mocha src/server/test/* --require babel-core/register --exit",
+    "test": "nyc mocha src/server/test/* --require babel-core/register --exit --timeout 60000",
     "build-server": "babel -d ./dist ./src/server -s",
     "db:migrate": "sequelize db:migrate",
     "db:migrate:undo": "sequelize db:migrate:undo"

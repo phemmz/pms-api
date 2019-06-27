@@ -1,8 +1,10 @@
 import express from 'express';
 import bodyparser from 'body-parser';
+import dotenv from 'dotenv';
 
 import routes from './routes';
 
+dotenv.config();
 const app = express();
 
 app.use(bodyparser.json());
@@ -24,3 +26,5 @@ app.use((_, res) => {
 
 const { PORT = 3000 } = process.env;
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+
+export default app;
